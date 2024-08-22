@@ -40,7 +40,8 @@ jobs:
         if: ${{ matrix.os == 'ubuntu-latest' }}
         run: |
           sudo apt update
-          sudo apt install -y rpm
+          sudo apt install -y rpm flatpak flatpak-builder appstream
+          flatpak remote-add --if-not-exists --user flathub https://dl.flathub.org/repo/flathub.flatpakrepo
       - name: Install WiX Toolset
         if: ${{ matrix.os == 'windows-latest' }}
         run: |
@@ -59,6 +60,7 @@ jobs:
           if [ "${{ matrix.os }}" == "ubuntu-latest" ]; then
             mv desktop/build/temp-*/binaries/haveno-*.rpm ${{ github.workspace }}/release
             mv desktop/build/temp-*/binaries/haveno_*.deb ${{ github.workspace }}/release
+            mv desktop/build/temp-*/binaries/*.flatpak ${{ github.workspace }}/release
           else
             mv desktop/build/temp-*/binaries/Haveno-*.dmg ${{ github.workspace }}/release
           fi
