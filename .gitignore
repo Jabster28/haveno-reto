@@ -37,3 +37,6 @@ deploy
 .vscode
 .vim/*
 */.factorypath
+.flatpak-builder
+*.flatpak
+desktop/package/linux/repo
