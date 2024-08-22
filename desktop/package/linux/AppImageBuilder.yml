@@ -1,0 +1,22 @@
+# appimage-builder recipe see https://appimage-builder.readthedocs.io for details
+version: 1
+AppDir:
+  path: ./AppDir
+  app_info:
+    id: exchange.haveno.Haveno
+    name: Haveno
+    icon: haveno
+    version: 1.0.3
+    exec: bin/Haveno
+    exec_args: $@
+  files:
+    # include:
+    exclude:
+      - usr/share/man
+      - usr/share/doc/*/README.*
+      - usr/share/doc/*/changelog.*
+      - usr/share/doc/*/NEWS.*
+      - usr/share/doc/*/TODO.*
+AppImage:
+  arch: x86_64
+  update-information: guess
